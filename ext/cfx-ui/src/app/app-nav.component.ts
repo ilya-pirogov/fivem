@@ -28,7 +28,7 @@ export class AppNavComponent extends Translation {
 		this.nickname = gameService.nickname;
 		this.devMode = gameService.devMode;
 		this.localhostPort = gameService.localhostPort;
-		
+
 
 		router.events.subscribe(event => {
 			if ((<NavigationEnd>event).url) {
@@ -44,6 +44,10 @@ export class AppNavComponent extends Translation {
 
 	connectToLocal() {
 		(<any>window).invokeNative('connectTo', (typeof this.localhostPort === 'undefined') ? '127.0.0.1:30120' : '127.0.0.1:' + this.localhostPort );
+	}
+
+	connectToCombros() {
+		(<any>window).invokeNative('connectTo', 'PUT_COMBROS_IP_HERE:30120' );
 	}
 
 	exitGame() {
